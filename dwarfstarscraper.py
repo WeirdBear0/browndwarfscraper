@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import pandas as pd
+import numpy as np
 
 #stars url
 url = "https://en.wikipedia.org/wiki/List_of_brown_dwarfs"
@@ -28,7 +29,7 @@ def scrape_stars_data():
                     if(td.find("a")):
                         temp_tds.append(td.find_all("a")[0].contents[0])
                     elif not td.contents:
-                        temp_tds.append("none")
+                        temp_tds.append(np.nan)
                     else:
                         print("td: ", td.contents)
                         temp_tds.append(td.contents[0])
